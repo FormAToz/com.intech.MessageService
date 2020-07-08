@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Сервис обмена сообщениями</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div th:each="el : ${posts}" class="alert alert-info mt-2">
+        <h3 th:text="${el.title}"></h3>
+        <p th:text="${el.anons}"></p>
+        <a th:href="'/blog/' + ${el.id}" class="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
+
+
+<main role="main" class="container">
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <div class="media text-muted pt-3">
+            <form action="/index" method="post">
+                <button type="submit" class="btn btn-primary btn-lg ml-2">Generate and Save</button>
+            </form>
+            <h3 class="text-black lh-100 ml-2 mb-3">Сервис обмена сообщениями</h3>
+
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <div class="media text-muted pt-3">
+            <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h6>
+                        <strong class="text-gray-dark">Purchases</strong>
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div th:each="el : ${purchases}" class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">MSISDN: <span th:text="${el.msisdn}"/>, ACTION: <span th:text="${el.action}"/>, TIMESTAMP: <span th:text="${el.timestamp}"/></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <div class="media text-muted pt-3">
+            <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h6>
+                        <strong class="text-gray-dark">Subscriptions</strong>
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div th:each="el : ${subscriptions}" class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">MSISDN: <span th:text="${el.msisdn}"/>, ACTION: <span th:text="${el.action}"/>, TIMESTAMP: <span th:text="${el.timestamp}"/></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
